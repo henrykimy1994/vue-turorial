@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue App</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- any component that accesses message gets linked to 'message' proxy -->
+        {{ message }} 
+    </div>
+
+    <script>
+        const { createApp } = Vue 
+
+        createApp({ 
+            data() { 
+                return {  
+                    // a reactive property - wrapped in a proxy
+                    message: 'Hello Hello!' 
+                    // Effect - the code that re-runs when reactive data changes
+                }
+            }
+        }).mount('#app') 
+
+        // simulate reactivity manually
+        function render() {
+            console.log('Rendered with: ', message);
+        }
+
+        function update(newVal) {
+            message = newVal
+            render()
+        }
+
+        update('Hi')
+    </script>
+</body>
+</html>

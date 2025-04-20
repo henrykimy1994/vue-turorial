@@ -23,7 +23,7 @@
         createApp({ // pass in an options object to tell Vue how to behave
             data() { // data() will run
                 return {  // reactively track all the properties you return
-                    message: 'Hello Hello!'
+                    message: 'Hello Hello!' // a reactive property - wrapped in a proxy
                 }
             }
         }).mount('#app') // take over the HTML element with the ID 'app'
