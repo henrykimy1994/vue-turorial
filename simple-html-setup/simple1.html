@@ -8,19 +8,25 @@
 </head>
 <body>
     <div id="app">
-        {{ message }}
+        {{ message }} <!-- scans and looks for {{}} replaces them with the corresponding value from its internal reactive state -->
+        <!-- usesd a 'virtual DOM' to compare old and new data -->
+        <!-- detects the change through a 'reactivity tracker' -->
+        <!-- efficiently updates only the affected parts of the DOM -->
     </div>
 
     <script>
-        const { createApp } = Vue
+        // Modular structure
+        // Destructuring assignment to extract the createApp function from the Vue global object
+        const { createApp } = Vue // Global object
 
-        createApp({
-            data() {
-                return {
+        // creates a new Vue application instance
+        createApp({ // pass in an options object to tell Vue how to behave
+            data() { // data() will run
+                return {  // reactively track all the properties you return
                     message: 'Hello Hello!'
                 }
             }
-        }).mount('#app')
+        }).mount('#app') // take over the HTML element with the ID 'app'
     </script>
 </body>
 </html>
